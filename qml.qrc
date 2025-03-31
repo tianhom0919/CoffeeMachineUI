@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/settingsLogo.png</file>
+        <file>images/homeLogo.png</file>
+        <file>HomePage.qml</file>
+        <file>images/leftArrowKey.png</file>
+        <file>images/rightArrowKey.png</file>
+        <file>Page1.qml</file>
+        <file>Page2.qml</file>
+        <file>Page3.qml</file>
+        <file>images/americano.png</file>
+        <file>images/espresso.png</file>
+        <file>images/latte.png</file>
+        <file>BrewSelection.qml</file>
+        <file>images/NoCoffeeBean.png</file>
+        <file>images/CoffeeBean.png</file>
+        <file>SettingsPage.qml</file>
+        <file>BrewingAnimation.qml</file>
+    </qresource>
+</RCC>
