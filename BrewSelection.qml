@@ -25,7 +25,7 @@ Item {
         height: parent.height / 1.875
         fillMode: Image.PreserveAspectFit // Preserve the aspect ratio when resizing
         source: image
-        anchors { left: parent.left; verticalCenter: parent.verticalCenter; verticalCenterOffset: -15 }
+        anchors { left: parent.left; verticalCenter: parent.verticalCenter; verticalCenterOffset: -parent.height / 32 }
     }
 
     // Back button
@@ -33,15 +33,15 @@ Item {
         id: backBtn
         width: parent.width / 4.3
         height: parent.height / 10
-        radius: 10
+        radius: parent.height / 48
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#d3d3d3"}
             GradientStop { position: 0.5; color: "#ffffff"}
             GradientStop { position: 1.0; color: "#d3d3d3"}
         }
         border.color: "black"
-        border.width: 2
-        anchors { left: parent.left; bottom: parent.bottom; leftMargin: 25; bottomMargin: 25 }
+        border.width: parent.height / 240
+        anchors { left: parent.left; bottom: parent.bottom; leftMargin: parent.height / 20; bottomMargin: parent.height / 20 }
 
         Text {
             id: backBtnText
@@ -65,15 +65,15 @@ Item {
         id: brewBtn
         width: parent.width / 4.3
         height: parent.height / 10
-        radius: 10
+        radius: parent.height / 48
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#d3d3d3"}
             GradientStop { position: 0.5; color: "#ffffff"}
             GradientStop { position: 1.0; color: "#d3d3d3"}
         }
         border.color: "black"
-        border.width: 2
-        anchors { right: parent.right; bottom: parent.bottom; rightMargin: 25; bottomMargin: 25 }
+        border.width: parent.height / 240
+        anchors { right: parent.right; bottom: parent.bottom; rightMargin: parent.height / 20; bottomMargin: parent.height / 20 }
 
         Text {
             id: brewBtnText
@@ -95,9 +95,9 @@ Item {
     // Coffee parameters selection
     Column {
         id: paramSelection
-        width: parent. width / 2
+        width: parent.width / 2
         height: parent.height / 2
-        anchors { verticalCenter: parent.verticalCenter; right: parent.right; verticalCenterOffset:  -15; rightMargin: parent.width / 8 }
+        anchors { verticalCenter: parent.verticalCenter; right: parent.right; verticalCenterOffset:  -parent.width / 32; rightMargin: parent.width / 8 }
 
         // Select coffee strength
         Item{
@@ -109,11 +109,11 @@ Item {
                 spacing: 5
 
                 Repeater {
-                    model: 7  // Bean Count
+                    model: 9  // Bean Count
 
                     Image {
-                        width: brewSelectionPage.width / 16
-                        height: brewSelectionPage.width / 16
+                        width: brewSelectionPage.width / 20
+                        height: brewSelectionPage.width / 20
                         id: coffeeBean
                         source: index < coffeeStrength ? "qrc:/images/CoffeeBean.png" : "qrc:/images/NoCoffeeBean.png"
 
@@ -161,7 +161,7 @@ Item {
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: parent.width / 16 }
                 }
 
-                // Left arrow for volume
+                // Left arrow for coffee volume
                 Image {
                     id: volLeft
                     width: parent.width / 8
@@ -169,14 +169,16 @@ Item {
                     fillMode: Image.PreserveAspectFit
                     source: "qrc:/images/leftArrowKey.png"
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: parent.width / 5 }
+                    opacity: coffeeVolume > 50 ? 1.0 : 0.5
+
                     MouseArea {
                         anchors.fill: parent
-                        enabled: coffeeVolume > 30
+                        enabled: coffeeVolume > 50
                         onClicked: scaleAnimVolL.start()
                     }
                 }
 
-                // Right arrow for volume
+                // Right arrow for coffee volume
                 Image {
                     id: volRight
                     width: parent.width / 8
@@ -184,9 +186,11 @@ Item {
                     fillMode: Image.PreserveAspectFit
                     source: "qrc:/images/rightArrowKey.png"
                     anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: parent.width / 10 }
+                    opacity: coffeeVolume < 200 ? 1.0 : 0.5
+
                     MouseArea {
                         anchors.fill: parent
-                        enabled: coffeeVolume < 196
+                        enabled: coffeeVolume < 200
                         onClicked: scaleAnimVolR.start()
                     }
                 }
@@ -238,32 +242,36 @@ Item {
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: parent.width / 16 }
                 }
 
-                // Left arrow for volume
+                // Left arrow for milk volume
                 Image {
                     id: milkLeft
                     width: parent.width / 8
                     height: parent.height / 2
                     fillMode: Image.PreserveAspectFit
-                    source: "qrc:/images/leftArrowKey.png"
+                    source: milkVolume === 0 ? "" : "qrc:/images/leftArrowKey.png"
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: parent.width / 5 }
+                    opacity: milkVolume > 50 ? 1.0 : 0.5
+
                     MouseArea {
                         anchors.fill: parent
-                        enabled: milkVolume > 0
+                        enabled: milkVolume > 50
                         onClicked: scaleAnimMilkL.start()
                     }
                 }
 
-                // Right arrow for volume
+                // Right arrow for milk volume
                 Image {
                     id: milkRight
                     width: parent.width / 8
                     height: parent.height / 2
                     fillMode: Image.PreserveAspectFit
-                    source: "qrc:/images/rightArrowKey.png"
+                    source: milkVolume === 0 ? "" : "qrc:/images/rightArrowKey.png"
                     anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: parent.width / 10 }
+                    opacity: milkVolume < 200 ? 1.0 : 0.5
+
                     MouseArea {
                         anchors.fill: parent
-                        enabled: milkVolume > 0 && milkVolume < 196
+                        enabled: milkVolume > 0 && milkVolume < 200
                         onClicked: scaleAnimMilkR.start()
                     }
                 }
@@ -309,7 +317,7 @@ Item {
 
         ScriptAction {
             script: {
-                stackview.pop()
+                stackview.push({ item: Qt.resolvedUrl("qrc:/BrewingAnimation.qml"), properties: { name: name, image: image } })
             }
         }
     }
@@ -322,7 +330,7 @@ Item {
 
         ScriptAction {
             script: {
-                coffeeVolume = coffeeVolume - 5
+                coffeeVolume = coffeeVolume - 10
             }
         }
     }
@@ -335,7 +343,7 @@ Item {
 
         ScriptAction {
             script: {
-                coffeeVolume = coffeeVolume + 5
+                coffeeVolume = coffeeVolume + 10
             }
         }
     }
@@ -348,7 +356,7 @@ Item {
 
         ScriptAction {
             script: {
-                milkVolume = milkVolume - 5
+                milkVolume = milkVolume - 10
             }
         }
     }
@@ -361,7 +369,7 @@ Item {
 
         ScriptAction {
             script: {
-                milkVolume = milkVolume + 5
+                milkVolume = milkVolume + 10
             }
         }
     }

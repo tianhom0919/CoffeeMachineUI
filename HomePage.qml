@@ -16,14 +16,14 @@ Item {
         id: startBtn
         width: parent.width / 2.3
         height: parent.height / 10
-        radius: 10
+        radius: parent.height / 48
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#d3d3d3"}
             GradientStop { position: 0.5; color: "#ffffff"}
             GradientStop { position: 1.0; color: "#d3d3d3"}
         }
         border.color: "black"
-        border.width: 2
+        border.width: parent.height / 240
         anchors { centerIn: parent; verticalCenterOffset: 30 }
 
         Text {

@@ -48,6 +48,7 @@ ApplicationWindow {
             width: 50
             height: 50
             anchors { left: parent.left; top: parent.top ; leftMargin: 25; topMargin: 15 }
+            opacity: stackview.depth === 1 ? 0.5 : 1.0
 
             MouseArea {
                 anchors.fill: parent
@@ -64,12 +65,13 @@ ApplicationWindow {
             width: 50
             height: 50
             anchors { right: parent.right; top: parent.top; rightMargin: 25; topMargin: 15 }
+            opacity: stackview.currentItem.objectName === "settingsPage" ? 0.5 : 1.0
 
             MouseArea {
                 anchors.fill: parent
+                enabled: stackview.currentItem.objectName !== "settingsPage"
                 onClicked: {
                     scaleAnimSettings.start()
-                    // go to settings interface after
                 }
             }
         }
@@ -134,7 +136,7 @@ ApplicationWindow {
 
         ScriptAction {
             script: {
-                //stackview.push() push settings page
+                stackview.push("qrc:SettingsPage.qml")
             }
         }
     }
