@@ -17,5 +17,7 @@
         <file>images/CoffeeBean.png</file>
         <file>SettingsPage.qml</file>
         <file>BrewingAnimation.qml</file>
+        <file>images/rinse.png</file>
+        <file>images/powerButton.png</file>
     </qresource>
 </RCC>
