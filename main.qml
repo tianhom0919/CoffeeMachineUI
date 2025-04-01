@@ -65,11 +65,19 @@ ApplicationWindow {
             width: 50
             height: 50
             anchors { right: parent.right; top: parent.top; rightMargin: 25; topMargin: 15 }
-            opacity: stackview.currentItem.objectName === "settingsPage" ? 0.5 : 1.0
+            opacity: {
+                if ( stackview.currentItem.objectName === "settingsPage" ) return 0.5
+                else if ( stackview.currentItem.objectName === "brewingAnimation" ) return 0.5
+                else return 1.0
+            }
 
             MouseArea {
                 anchors.fill: parent
-                enabled: stackview.currentItem.objectName !== "settingsPage"
+                enabled: {
+                    if ( stackview.currentItem.objectName === "settingsPage" ) return false
+                    else if ( stackview.currentItem.objectName === "brewingAnimation" ) return false
+                    else return true
+                }
                 onClicked: {
                     scaleAnimSettings.start()
                 }
@@ -95,9 +103,7 @@ ApplicationWindow {
         }
 
         // Display stackview depth for debugging
-        Text {
-            text: stackview.depth
-        }
+        // Text { text: stackview.currentItem.objectName }
 
         Rectangle {
             id: separator

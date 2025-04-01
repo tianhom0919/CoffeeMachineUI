@@ -8,8 +8,9 @@ Item {
     Text {
         id: logo
         text: "[Insert Logo Here]"
+        font.pixelSize: parent.height / 12
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -40
+        anchors.verticalCenterOffset: -parent.height / 6
     }
 
     Rectangle {

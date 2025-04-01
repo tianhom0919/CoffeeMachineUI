@@ -17,7 +17,7 @@ Item {
         }
         border.color: "black"
         border.width: parent.height / 240
-        anchors { centerIn: parent; verticalCenterOffset: -parent.height / 30; horizontalCenterOffset: parent.height / 3 }
+        anchors { centerIn: parent; verticalCenterOffset: -parent.height / 15; horizontalCenterOffset: parent.height / 3 }
 
         Image {
             id: powerBtnImage
@@ -57,7 +57,7 @@ Item {
         }
         border.color: "black"
         border.width: parent.height / 240
-        anchors { centerIn: parent; verticalCenterOffset: -parent.height / 30; horizontalCenterOffset: -parent.height / 3 }
+        anchors { centerIn: parent; verticalCenterOffset: -parent.height / 15; horizontalCenterOffset: -parent.height / 3 }
 
         Image {
             id: rinseBtnImage
