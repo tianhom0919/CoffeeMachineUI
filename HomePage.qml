@@ -3,6 +3,7 @@ import QtQuick.Controls 1.4
 
 Item {
     id: homePage
+    objectName: "homePage"
 
     // Replace with logo image after
     Text {

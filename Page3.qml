@@ -1,10 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-import QtQuick 2.0
-import QtQuick.Controls 1.4
 
 Item {
     id: page3
+    objectName: "page3"
 
     // Displays coffee name
     Text {

@@ -3,6 +3,7 @@ import QtQuick.Controls 1.4
 
 Item {
     id: page1
+    objectName: "page1"
 
     // Displays coffee name
     Text {

@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Item {
     id: brewSelectionPage
+    objectName: "brewSelectionPage"
     // Set properties to receive passed values
     property string name
     property string image
@@ -186,11 +187,11 @@ Item {
                     fillMode: Image.PreserveAspectFit
                     source: "qrc:/images/rightArrowKey.png"
                     anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: parent.width / 10 }
-                    opacity: coffeeVolume < 200 ? 1.0 : 0.5
+                    opacity: coffeeVolume < 150 ? 1.0 : 0.5
 
                     MouseArea {
                         anchors.fill: parent
-                        enabled: coffeeVolume < 200
+                        enabled: coffeeVolume < 150
                         onClicked: scaleAnimVolR.start()
                     }
                 }
@@ -267,11 +268,11 @@ Item {
                     fillMode: Image.PreserveAspectFit
                     source: milkVolume === 0 ? "" : "qrc:/images/rightArrowKey.png"
                     anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: parent.width / 10 }
-                    opacity: milkVolume < 200 ? 1.0 : 0.5
+                    opacity: milkVolume < 150 ? 1.0 : 0.5
 
                     MouseArea {
                         anchors.fill: parent
-                        enabled: milkVolume > 0 && milkVolume < 200
+                        enabled: milkVolume > 0 && milkVolume < 150
                         onClicked: scaleAnimMilkR.start()
                     }
                 }

@@ -136,6 +136,7 @@ Item {
 
         ScriptAction {
             script: {
+                stackview.push("qrc:/RinsingAnimation.qml")
             }
         }
     }

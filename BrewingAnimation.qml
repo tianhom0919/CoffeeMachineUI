@@ -8,7 +8,7 @@ Item {
     property string name
     property string image
 
-    // Displays "coffee preparing text"
+    // Displays "coffee preparing" text
     Text {
         id: coffeeName
         text: "Your "+ name + " is being prepared..."

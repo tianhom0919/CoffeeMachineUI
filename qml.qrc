@@ -19,5 +19,6 @@
         <file>BrewingAnimation.qml</file>
         <file>images/rinse.png</file>
         <file>images/powerButton.png</file>
+        <file>RinsingAnimation.qml</file>
     </qresource>
 </RCC>
