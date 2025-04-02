@@ -60,7 +60,10 @@ Item {
     Image {
         id: leftArrowKey
         source: "qrc:/images/leftArrowKey.png"
-        anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: 25; verticalCenterOffset: -40 }
+        width: parent.width / 12
+        height: parent.height / 7.5
+        fillMode: Image.PreserveAspectFit
+        anchors { left: parent.left; verticalCenter: parent.verticalCenter; leftMargin: parent.height / 19.2; verticalCenterOffset: -parent.height / 12 }
 
         MouseArea {
             anchors.fill: parent
